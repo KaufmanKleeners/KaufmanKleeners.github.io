@@ -1,5 +1,9 @@
-<!--The ONly dev of this is MK-->
-<!--NOTE: Themes are not here yet tho they will be here soon-->
+<!--The 0Nly dev of this is MK-->
+<!--NOTE: Themes are officaly on this page but looking at this code will be gay-->
+<!--NOTE: I have added js and stuff for the theme and also ive added sign up and a login page u need a backend dev 4 that tho-->
+<!--NOTE: But if this didn't kill u yet no wories cuz v3 is on the way as well that one is more professional than this-->
+<!--Warning: Using this code for anything u want or even keeping the code and the site with out my legal perms will result in a fee of $200-->
+<!--Disclamer: I have the right to make anychanges to the terms and policies of this code for more info go to the very bottom part of the code and read it-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +12,11 @@
     <!--NOTE: This is what ever you want to name the tab-->
     <title>Kaufman Kleeners</title>
     <!--NOTE: This get's the logo from images folder and the offial.png-->
-    <link rel="icon" href="images/Untitled.jpeg" type="image/jpeg">
+    <link rel="icon" href="images/offical.png" type="image/png">
     <!--NOTE: This is all the css requred for me to have it up so messing with any of these will get ur style messed up-->
+    <!--NOTE: for any css styles u need plz let me know making one change might mess up ur whole thing and i haven't left notes at css cuz they are connected and stuff just le me do it-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-       
         :root {
             --primary-color: #2e7d32;
             --secondary-color: #4caf50;
@@ -22,6 +26,17 @@
             --white: #fff;
             --gray: #f5f5f5;
             --dark-gray: #757575;
+        }
+
+        .dark-theme {
+            --primary-color: #4caf50;
+            --secondary-color: #388e3c;
+            --dark-color: #1b5e20;
+            --light-color: #333;
+            --text-color: #f5f5f5;
+            --white: #222;
+            --gray: #444;
+            --dark-gray: #aaa;
         }
 
         * {
@@ -34,7 +49,9 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            padding-top: 60px; 
+            padding-top: 60px;
+            background-color: var(--white);
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .container {
@@ -58,7 +75,6 @@
             list-style: none;
         }
 
-        
         header {
             background-color: var(--white);
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -67,13 +83,14 @@
             top: 0;
             left: 0;
             z-index: 1000;
+            transition: background-color 0.3s;
         }
 
         header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.7rem 0; 
+            padding: 0.7rem 0;
         }
 
         .logo h1 {
@@ -83,6 +100,7 @@
 
         nav ul {
             display: flex;
+            align-items: center;
         }
 
         nav ul li {
@@ -99,7 +117,19 @@
             color: var(--primary-color);
         }
 
-      
+        .theme-toggle {
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            transition: transform 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
         .hero {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://watermark.lovepik.com/photo/50694/8863.jpg_wh1200.jpg');
             background-size: cover;
@@ -122,7 +152,6 @@
             margin-right: auto;
         }
 
-       
         .cta-button {
             display: inline-block;
             background-color: var(--primary-color);
@@ -137,7 +166,6 @@
             background-color: var(--dark-color);
         }
 
-       
         .services {
             padding: 5rem 0;
             background-color: var(--gray);
@@ -195,7 +223,6 @@
             margin-bottom: 1rem;
         }
 
-        
         .about {
             padding: 5rem 0;
         }
@@ -228,10 +255,10 @@
             margin-right: 0.5rem;
         }
 
- 
         .testimonials {
             padding: 5rem 0;
             background-color: var(--gray);
+            overflow: hidden;
         }
 
         .testimonials h2 {
@@ -241,10 +268,17 @@
             color: var(--primary-color);
         }
 
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        .testimonial-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .testimonial-track {
+            display: flex;
             gap: 2rem;
+            padding-bottom: 1rem;
+            transition: transform 0.5s ease;
         }
 
         .testimonial-card {
@@ -252,6 +286,9 @@
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            min-width: 300px;
+            scroll-snap-align: start;
+            flex: 0 0 auto;
         }
 
         .rating {
@@ -259,10 +296,6 @@
             margin-bottom: 1rem;
         }
 
-        .half-star {
-            color: #ffc107;
-            margin-bottom: 1rem;
-        }
         .testimonial-card p {
             font-style: italic;
             margin-bottom: 1.5rem;
@@ -279,15 +312,20 @@
             color: var(--dark-gray);
         }
 
-     
         .contact {
             padding: 5rem 0;
             background-color: var(--white);
         }
 
         .contact .container {
-            max-width: 800px;
-            text-align: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .contact-info-section {
+            text-align: left;
         }
 
         .contact h2 {
@@ -303,17 +341,14 @@
         .contact-details {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
             gap: 1.5rem;
             margin-bottom: 3rem;
             text-align: left;
-            width: 100%;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            width: 100%;
         }
 
         .contact-item i {
@@ -323,15 +358,66 @@
             min-width: 30px;
         }
 
-        .contact-info {
-            text-align: left;
-        }
-
         .contact-info h4 {
             font-size: 1.1rem;
             margin-bottom: 0.3rem;
         }
 
+        .login-form {
+            background-color: var(--gray);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .login-form h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .form-actions button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .form-actions button:hover {
+            background-color: var(--dark-color);
+        }
+
+        .form-actions a {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
 
         footer {
             background-color: var(--dark-color);
@@ -410,7 +496,6 @@
             color: var(--light-color);
         }
 
-
         @media (max-width: 768px) {
             header .container {
                 flex-direction: column;
@@ -441,6 +526,10 @@
 
             .about-image {
                 order: -1;
+            }
+
+            .contact .container {
+                grid-template-columns: 1fr;
             }
 
             footer .container {
@@ -482,25 +571,21 @@
                 font-size: 1rem;
             }
             
-            .contact-details {
-                align-items: center;
-                text-align: center;
-            }
-            
-            .contact-item {
-                justify-content: center;
+            .testimonial-card {
+                min-width: 250px;
             }
         }
     </style>
+    <!--Here is where all the css ends and starts the main layout of the page-->
 </head>
 <body>
-  <!--NOTE: This is the Nav bar-->
-    <!--NOTE: I have added href to the nav bar-->
+      <!--NOTE: This is the Nav bar-->
+    <!--NOTE: I have kept the href u wanted-->
     <header>
         <div class="container">
             <div class="logo">
                 <a href="/">
-                <h1>Kaufman Kleeners</h1>
+                    <h1>Kaufman Kleeners</h1>
                 </a>
             </div>
             <nav>
@@ -509,19 +594,18 @@
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Help Center</a></li>
                     <li><a href="#">Contact</a></li>
+                    <li><button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button></li>
                 </ul>
             </nav>
         </div>
     </header>
-
     <!--NOTE: While I am the main one to make this page since you haven't told me everything I am not finishing the code yet you need to replace your variables with the actual things u want.-->
-
     <section class="hero">
         <div class="container">
-          <!--NOTE: These two things are the main things that the user will see when ever they go to this page so it has to be sth clean profession al and mainly attractive replacin text shouldn't be hard for u and good luck.-->
-            <h2>Short text here</h2>
-            <p>Your slogan or brief description</p>
-            <a href="#" class="cta-button">Order Now</a>
+            <!--NOTE: These two things are the main things that the user will see when ever they go to this page so it has to be sth clean profession al and mainly attractive replacin text shouldn't be hard for u and good luck.-->
+            <h2>v2</h2>
+            <p>Congrats u have success fully came to the v2 of KKs</p>
+            <a href="/v3" class="cta-button">cheeck v3</a>
         </div>
     </section>
 <!--NOTE: This is the part where the user gets to know us once they meet us in the very first part of the page so we should keep this part organized and presized info.-->
@@ -532,118 +616,184 @@
             <div class="services-grid">
                 <div class="service-card">
                     <i class="fas fa-trash-alt"></i>
-                    <h3>Your fist service</h3>
-                    <p>This is a brief description about your server.</p>
+                    <h3>Your first service</h3>
+                    <p>This is a brief description about your service.</p>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-business-time"></i>
-                    <h3>Your second servic</h3>
-                    <p>then a brief descption along with it.</p>
+                    <h3>Your second service</h3>
+                    <p>Then a brief description along with it.</p>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-recycle"></i>
                     <h3>Your third one</h3>
-                    <p>you can remove this if u only have 2.</p>
+                    <p>You can remove this if you only have 2.</p>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-broom"></i>
-                    <h3>and lets say 4</h3>
-                    <p>You can remove this if u only have 3.</p>
+                    <h3>And let's say 4</h3>
+                    <p>You can remove this if you only have 3.</p>
                 </div>
             </div>
         </div>
     </section>
-<!--NOTE: This is the section I wrote about Ur company u have to edit it to sth professional-->
+<!--NOTE: This is the section I wrote about Ur company u have to edit it to sth professional in order for u to gain more members and build trust-->
     <section id="about" class="about">
         <div class="container">
             <div class="about-content">
                 <h2>About Kaufman Kleeners</h2>
-                <p>Kaufman Kleeners is founded by @Put your name here or username if u don't want ur name on public@ to help the community gro together as well as keeping the environment as safe as possible.</p>
-                <p>Our team is working everyday to help u get ur invronment clean and safe. other description goes on here.</p>
+                <p>Kaufman Kleeners is founded by @Put your name here or username if you don't want your name on public@ to help the community grow together as well as keeping the environment as safe as possible.</p>
+                <p>Our team is working everyday to help you get your environment clean and safe. Other description goes on here.</p>
+                <!--NOTE: This are the checks and stuff u see for ur comp-->
+                <!--Feel free to edit the feature u want to provide  but they gotta be real-->
                 <ul class="about-features">
-                  <!--Feel free to edit the feature u want to provide-->
                     <li><i class="fas fa-check"></i>Secured</li>
                     <li><i class="fas fa-check"></i>Friendly workers</li>
                     <li><i class="fas fa-check"></i>No personal info required</li>
                     <li><i class="fas fa-check"></i>Small pricing</li>
                 </ul>
+          <!--NOTE: This is the image url want to change it replace it with urs (optional)-->
             </div>
             <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="idk">
+                <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Company Image">
             </div>
         </div>
     </section>
 <!--NOTE: This is the section where all the comments are written-->
     <section id="testimonials" class="testimonials">
         <div class="container">
-            <h2>What Our Majory of users Say about us</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p>"Kaufman Kleeners is the best lol!"</p>
-                    <div class="client">
-                        <strong>- MK</strong>
-                        <span>Frontend dev</span>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <div class="half-star">
-                          <i class="fa fa-star-half-o"></i>
+            <h2>What Our Users Say About Us</h2>
+            <div class="testimonial-container">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Comment"</p>
+                        <div class="client">
+                            <strong>- Name</strong>
+                            <span>ROLE</span>
                         </div>
                     </div>
-                    <p>IDK any other comments u want to add put it here.</p>
-                    <div class="client">
-                        <strong>- MK</strong>
-                        <span>C0-0wner</span>
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"COmment"</p>
+                        <div class="client">
+                            <strong>- Name</strong>
+                            <span>Role</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p>"Comment"</p>
+                        <div class="client">
+                            <strong>- Name</strong>
+                            <span>Role</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Comment"</p>
+                        <div class="client">
+                            <strong>- Name</strong>
+                            <span>Role</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Comment"</p>
+                        <div class="client">
+                            <strong>- Name</strong>
+                            <span>Role</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+<!--NOTE: These are the contact info replace them with ur actual info-->
     <section id="contact" class="contact">
         <div class="container">
-            <h2>Contact Us</h2>
-            <p>Contact us to discuss on how we can help u here is the contact infor</p>
-            
-            <div class="contact-details">
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <!--NOTE: Replace urs with ur phone number-->
-                    <div class="contact-info">
-                        <h4>Phone</h4>
-                        <p>(555) 123-4567</p>
+            <div class="contact-info-section">
+                <h2>Contact Us</h2>
+                <p>Contact us to discuss how we can help you</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-info">
+                            <h4>Phone</h4>
+                            <p>(555) 123-4567</p>
+                        </div>
                     </div>
-                </div>
-              <!--NOTE: Replace this with ur actual email-->
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <div class="contact-info">
-                        <h4>Email</h4>
-                        <p>ebenezergebre@gmail.com</p>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-info">
+                            <h4>Email</h4>
+                            <p>ebenezergebre@gmail.com</p>
+                        </div>
                     </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div class="contact-info">
-                        <h4>Service Area</h4>
-                        <p>IDK yet</p>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-info">
+                            <h4>Service Area</h4>
+                            <p>IDK yet</p>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!--NOTE: This is the entire sign up form for the v2 part of update-->
+            <div class="login-form">
+                <h3>Users session</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit">Sign In</button>
+                        <a href="#">Forgot password?</a>
+                    </div>
+                    <div class="form-group" style="margin-top: 1.5rem; text-align: center;">
+                        <p>Don't have an account? <a href="#">Register here</a></p>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
-<!--NOTE: Every thing you see under here is the Green footer-->
+<!--NOTE: This is the green section u see on the bottom-->
     <footer>
         <div class="container">
             <div class="footer-left">
@@ -656,7 +806,7 @@
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
-              <!--NOTE: These are the terms of use and policy pages-->
+                <!--NOTE: These all the terms of use and policy pages and stuff don't edit anything except for href-->
                 <div class="footer-links">
                     <h4>Legal</h4>
                     <ul>
@@ -667,7 +817,8 @@
             </div>
           <!--NOTE: all the follow us icons are here if u want to add or remove any-->
           <!--NOTE: make sure to replace the "#" with the actual socal media link for eg. discord has to be https://discord.gg/your ending for server-->
-          <div class="footer-right">
+
+            <div class="footer-right">
                 <div class="follow-us">
                     <h4>Follow Us</h4>
                     <div class="social-icons">
@@ -679,11 +830,78 @@
                     </div>
                 </div>
             </div>
-          <!--NOTE: the copy right div is here -->
+            <!--NOTE: THis  is the copy right and stuff divided-->
             <div class="copyright">
                 <p>&copy; 2023 Kaufman Kleeners. All rights reserved.</p>
             </div>
         </div>
     </footer>
+<!--NOTE: Every thing inside the script note will change to //NOTE: then note goes on cuz of js functionality-->
+    <script>
+        //NOTE: This is the theme that is loading from the previous code abv
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        //NOTE: This has a local storage to see which one the user have prefered before and it auto picks it based on the last preference
+        const savedTheme = localStorage.getItem('theme') || 
+                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        //NOTE: This is keeping the theme
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-theme');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        //NOTE: This is a theme handler
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            const isDark = body.classList.contains('dark-theme');
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+        
+        //NOTE: THis enables auto scrolling if we remove this no more scrolling
+        const testimonialTrack = document.getElementById('testimonialTrack');
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        const testimonialWidth = testimonials[0].offsetWidth + 32; //NOTE: This is the gap in b/n each comments written
+        
+        //NOTE: This gives the cards or like the comments a loop
+        testimonials.forEach(card => {
+            const clone = card.cloneNode(true);
+            testimonialTrack.appendChild(clone);
+        });
+        
+        let scrollPosition = 0;
+        
+        function autoScrollTestimonials() {
+            //NOTE: The speed of scrolling is here feel free to adjust it anytime
+            scrollPosition += 0.5; 
+            testimonialTrack.style.transform = `translateX(-${scrollPosition}px)`;
+            
+            //NOTE: This resets the scrolling once it is done
+            if (scrollPosition >= testimonialWidth * testimonials.length) {
+                scrollPosition = 0;
+                //NOTE: Small delay not to make the scrolling tough
+                setTimeout(() => {
+                    testimonialTrack.style.transition = 'none';
+                    testimonialTrack.style.transform = `translateX(0)`;
+                    setTimeout(() => {
+                        testimonialTrack.style.transition = 'transform 0.5s ease';
+                    }, 10);
+                }, 500);
+            }
+            
+            requestAnimationFrame(autoScrollTestimonials);
+        }
+        
+        //NOTE: This will start the auto-scrolling on the comments
+        autoScrollTestimonials();
+    </script>
 </body>
 </html>
+
+<!--Terms of use-->
+<!--MK or me is the offical owner of this github repo and entire code for making any changes and stuff make sure to give me credits-->
+<!--By forking this repo you and your team agree not to use our codes, use it for making our business fail or any other attacks-->
+<!--By using this you agree to keep the KKs offical site as safe as it is and for any dammages you and your team makes will agree to pay based on the damages u have made starting from $200 fine-->
+<!--For any other info please contact the owner of this project-->
