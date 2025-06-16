@@ -1,0 +1,1011 @@
+<!--The 0Nly dev of this is MK and AI-->
+<!--NOTE: Themes are officaly removed from this page but looking at this code will be gay-->
+<!--NOTE: I have added sign up and a login page u need a backend dev 4 that tho-->
+<!--NOTE: V3 is this one if this didn't kill u only a gun can kill u so for me to win get me the gun-->
+<!--Warning: Using this code for anything u want or even keeping the code and the site with out my legal perms will result in a fee of $20,000-->
+<!--Disclamer: I have the right to make anychanges to the terms and policies of this code for more info go to the very bottom part of the code and read it-->
+<!--And this entire V3 is updated with ai and I only fixed some stuff-->
+<!--Ill also try to add the backend like in a few weeks IDK-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--NOTE: This is what ever you want to name the tab-->
+    <title>Kaufman Kleeners</title>
+    <!--NOTE: This get's the logo from images folder and the head.png which is ur new logo-->
+    <link rel="icon" href="images/head.png" type="image/png">
+    <!--NOTE: This is all the css requred for me to have it up so messing with any of these will get ur style messed up-->
+    <!--NOTE: for any css styles u need plz let me know making one change might mess up ur whole thing and i haven't left notes at css cuz they are connected and stuff just le me do it-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #4caf50;
+            --dark-color: #1b5e20;
+            --light-color: #e8f5e9;
+            --text-color: #333;
+            --white: #fff;
+            --gray: #f5f5f5;
+            --dark-gray: #757575;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            padding-top: 60px;
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.7rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 1rem;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+            background-color: rgba(0,0,0,0.05);
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .dropdown-toggle:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.2s ease;
+            z-index: 100;
+        }
+
+        .nav-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-color);
+            transition: all 0.2s;
+            font-size: 0.75rem;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: rgba(0,0,0,0.05);
+            color: var(--primary-color);
+        }
+
+        .dropdown-arrow {
+            transition: transform 0.2s ease;
+        }
+
+        .nav-dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .login-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .login-button:hover {
+            background-color: var(--dark-color);
+        }
+
+        .hero {
+            background-color: var(--gray);
+            padding: 6rem 0;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--dark-color);
+        }
+
+        .hero-image {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .services {
+            padding: 5rem 0;
+            background-color: var(--white);
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--gray);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+
+        .service-card:hover::before {
+            border-color: var(--primary-color);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .about {
+            padding: 5rem 0;
+            background-color: var(--gray);
+        }
+
+        .about .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-features {
+            margin: 1.5rem 0;
+        }
+
+        .about-features li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .about-features i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+
+        .testimonials {
+            padding: 5rem 0;
+            background-color: var(--white);
+            overflow: hidden;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .testimonial-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .testimonial-track {
+            display: flex;
+            gap: 2rem;
+            padding-bottom: 1rem;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-card {
+            background-color: var(--gray);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            min-width: 300px;
+            scroll-snap-align: start;
+            flex: 0 0 auto;
+        }
+
+        .rating {
+            color: #ffc107;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .client {
+            font-weight: 600;
+        }
+
+        .client span {
+            display: block;
+            font-weight: normal;
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+        }
+
+        .contact {
+            padding: 5rem 0;
+            background-color: var(--gray);
+        }
+
+        .contact .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .contact-info-section {
+            text-align: left;
+        }
+
+        .contact h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-item i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            min-width: 30px;
+        }
+
+        .contact-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .login-form {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .login-form h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            background-color: var(--white);
+            color: var(--text-color);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .form-actions button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .form-actions button:hover {
+            background-color: var(--dark-color);
+        }
+
+        .form-actions a {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 3rem 0 1.5rem;
+        }
+
+        footer .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-left {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--light-color);
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        .follow-us {
+            margin-bottom: 2rem;
+        }
+
+        .follow-us h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1.5rem;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--light-color);
+        }
+
+        .copyright {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--light-color);
+        }
+
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem;
+            }
+
+            .nav-dropdown {
+                width: 100%;
+                text-align: center;
+            }
+
+            .dropdown-menu {
+                left: 50%;
+                transform: translate(-50%, 10px);
+            }
+
+            .nav-dropdown:hover .dropdown-menu {
+                transform: translate(-50%, 0);
+            }
+
+            .hero .container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .about .container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .contact .container {
+                grid-template-columns: 1fr;
+            }
+
+            footer .container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-left {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-right {
+                text-align: left;
+            }
+
+            .social-icons {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding-top: 80px;
+            }
+            
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .testimonial-card {
+                min-width: 250px;
+            }
+        }
+    </style>
+    <!--Here is where all the css ends and starts the main layout of the page-->
+</head>
+<body>
+    <!--NOTE: This is the new Nav bar for like v3-->
+    <!--NOTE: I have kept the href u wanted-->
+    <header>
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="/images/head.png">
+                <h1>Kaufman Kleeners</h1>
+            </a>
+            <nav>
+                <ul>
+                    <li class="nav-dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            Services
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#">Residential Cleaning</a>
+                            <a href="#">Commercial Cleaning</a>
+                            <a href="#">Deep Cleaning</a>
+                            <a href="#">Specialty Cleaning</a>
+                        </div>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            About Us
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#">Our Mission</a>
+                            <a href="#">Our Team</a>
+                            <a href="#">Our Values</a>
+                        </div>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            Help
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#">FAQs</a>
+                            <a href="#">Support</a>
+                            <a href="#">Guides</a>
+                        </div>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            Contact
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#">Get a Quote</a>
+                            <a href="#">Feedback</a>
+                            <a href="#">Careers</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="login-button">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Login
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+      <!--NOTE: While I am the main one to make this page since you haven't told me everything I am not finishing the code yet you need to replace your variables with the actual things u want.-->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+              <!--NOTE: These two things are the main things that the user will see when ever they go to this page so it has to be sth clean profession al and mainly attractive replacin text shouldn't be hard for u and good luck.-->
+                <h2>Professional Cleaning Services</h2>
+                <p>About KKs only a brief desc tho.</p>
+                <a href="#" class="cta-button">Get started for free</a>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80">
+            </div>
+        </div>
+    </section>
+    <!--NOTE: This is the part where the user gets to know us once they meet us in the very first part of the page so we should keep this part organized and presized info.-->
+  <!--NOTE: This should be an actual things that u will offer -->
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Your first service</h3>
+                    <p>This is a brief description about your service.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-building"></i>
+                    <h3>Your second service</h3>
+                    <p>Then a brief description along with it.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-couch"></i>
+                    <h3>Your third one</h3>
+                    <p>You can remove this if you only have 2.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-broom"></i>
+                    <h3>And let's say 4</h3>
+                    <p>You can remove this if you only have 3.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--NOTE: This is the section I wrote about Ur company u have to edit it to sth professional in order for u to gain more members and build trust-->
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2>About Kaufman Kleeners</h2>
+                <p>A brief desc.</p>
+                <p>But keep it organized.</p>
+                <!--NOTE: This are the checks and stuff u see for ur comp-->
+                <!--Feel free to edit the feature u want to provide  but they gotta be real-->
+                <ul class="about-features">
+                    <li><i class="fas fa-check"></i>Eco-friendly products</li>
+                    <li><i class="fas fa-check"></i>Background-checked staff</li>
+                    <li><i class="fas fa-check"></i>Flexible scheduling</li>
+                    <li><i class="fas fa-check"></i>Competitive pricing</li>
+                </ul>
+            </div>
+            <!--NOTE: This is the image url want to change it replace it with urs (optional)-->
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80">
+            </div>
+        </div>
+    </section>
+      <!--NOTE: This is the section where all the comments are written-->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonial-container">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Comment."</p>
+                        <div class="client">
+                            <strong>- Name</strong>
+                            <span>Role</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Comment"</p>
+                        <div class="client">
+                            <strong>- Name</strong>
+                            <span>Role</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p>"Comment"</p>
+                        <div class="client">
+                            <strong>- Name</strong>
+                            <span>Role</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--NOTE: These are the contact info replace them with ur actual info-->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-info-section">
+                <h2>Contact Us</h2>
+                <p>Contact us if u ned help</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-info">
+                            <h4>Phone</h4>
+                            <p>(123) 456-7890</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-info">
+                            <h4>Email</h4>
+                            <p>yourgmail@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-info">
+                            <h4>Service Area</h4>
+                            <p>IDK</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--NOTE: This is now the comments section that is fully functional including submitting a form-->
+            <div class="login-form">
+                <h3>Leave Us a Comment</h3>
+                <form action="https://formspree.io/f/mrbkqwwl" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Comment</label>
+                        <textarea id="message" name="message" placeholder="Your feedback or comment" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit">Submit Comment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+      <!--NOTE: This is the green section u see on the bottom-->
+    <footer>
+        <div class="container">
+            <div class="footer-left">
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <!--NOTE: These all the terms of use and policy pages and stuff don't edit anything except for href-->
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+          <!--NOTE: all the follow us icons are here if u want to add or remove any-->
+          <!--NOTE: make sure to replace the "#" with the actual socal media link for eg. discord has to be https://discord.gg/your ending for server-->
+            <div class="footer-right">
+                <div class="follow-us">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!--NOTE: THis  is the most important sause copy right section-->
+            <div class="copyright">
+                <p>&copy; 2023 Kaufman Kleeners. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+<!--NOTE: Every thing inside the script note will change to //NOTE: then note goes on cuz of js functionality-->
+    <script>
+        // NOTE: auto-scroll functionality
+        const testimonialTrack = document.getElementById('testimonialTrack');
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        const testimonialWidth = testimonials[0].offsetWidth + 32;
+        
+        // NOTE: keep them on the right side for ever
+        testimonials.forEach(card => {
+            const clone = card.cloneNode(true);
+            testimonialTrack.appendChild(clone);
+        });
+        
+        let scrollPosition = 0;
+        let animationId;
+        
+        function autoScrollTestimonials() {
+            scrollPosition += 0.5;
+            
+            // NOTE: reset position of the scrolling
+            if (scrollPosition >= testimonialWidth * testimonials.length) {
+                // NOTE: reset for it
+                testimonialTrack.style.transition = 'none';
+                scrollPosition = 0;
+                testimonialTrack.style.transform = `translateX(0)`;
+                
+                // NOTE: countinous force reflow
+                void testimonialTrack.offsetWidth;
+                
+                // NOTE: restore and continue
+                testimonialTrack.style.transition = 'transform 0.5s ease';
+            }
+            
+            testimonialTrack.style.transform = `translateX(-${scrollPosition}px)`;
+            animationId = requestAnimationFrame(autoScrollTestimonials);
+        }
+        
+        // NOTE: Start the movement
+        autoScrollTestimonials();
+
+    </script>
+</body>
+</html>
+
+
+
+
+<!--Terms of use-->
+<!--MK or me is the offical owner of this github repo and entire code for making any changes and stuff make sure to give me credits-->
+<!--By forking this repo you and your team agree not to use our codes, use it for making our business fail or any other attacks-->
+<!--By using this you agree to keep the KKs offical site as safe as it is and for any dammages you and your team makes will agree to pay based on the damages u have made starting from $200 fine-->
+<!--For any other info please contact the owner of this project-->
+<!--By using this code for owners u agree to pay me as the deal and in any case I want to I have the right to stop you from using this code for the site-->
+<!--Any additional stuff made to improve this by forking the repo *MUST*Give me credit on the code and on the site-->
+<!--This entire project is updated using ai for 95% if it-->
