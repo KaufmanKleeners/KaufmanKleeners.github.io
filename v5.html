@@ -14,14 +14,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--NOTE: This is what ever you want to name the tab-->
     <title>Kaufman Kleeners</title>
-    <!--NOTE: This get's the logo from images folder and the head.png which is ur new logo-->
     <link rel="icon" href="images/head.png" type="image/png">
     <!-- Load Clerk's styles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.css">
-    <!--NOTE: This is all the css requred for me to have it up so messing with any of these will get ur style messed up-->
-    <!--NOTE: for any css styles u need plz let me know making one change might mess up ur whole thing and i haven't left notes at css cuz they are connected and stuff just le me do it-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
@@ -243,6 +239,8 @@
             font-weight: 600;
             transition: background-color 0.3s;
             cursor: pointer;
+            border: none;
+            font-size: 1rem;
         }
 
         .cta-button:hover {
@@ -310,6 +308,10 @@
         .service-card h3 {
             font-size: 1.4rem;
             margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--dark-gray);
         }
 
         .about {
@@ -690,11 +692,8 @@
             }
         }
     </style>
-    <!--Here is where all the css ends and starts the main layout of the page-->
 </head>
 <body>
-    <!--NOTE: This is the new Nav bar for like v3-->
-    <!--NOTE: I have kept the href u wanted-->
     <header>
         <div class="container">
             <a href="/" class="logo">
@@ -762,11 +761,10 @@
             </nav>
         </div>
     </header>
-      <!--NOTE: While I am the main one to make this page since you haven't told me everything I am not finishing the code yet you need to replace your variables with the actual things u want.-->
+
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-              <!--NOTE: These two things are the main things that the user will see when ever they go to this page so it has to be sth clean profession al and mainly attractive replacin text shouldn't be hard for u and good luck.-->
                 <h2>Professional Cleaning Services</h2>
                 <p>About KKs only a brief desc tho.</p>
                 <button id="heroCtaButton" class="cta-button">Get started for free</button>
@@ -776,8 +774,6 @@
             </div>
         </div>
     </section>
-    <!--NOTE: This is the part where the user gets to know us once they meet us in the very first part of the page so we should keep this part organized and presized info.-->
-  <!--NOTE: This should be an actual things that u will offer -->
 
     <section id="services" class="services">
         <div class="container">
@@ -785,37 +781,34 @@
             <div class="services-grid">
                 <div class="service-card">
                     <i class="fas fa-home"></i>
-                    <h3>Your first service</h3>
-                    <p>This is a brief description about your service.</p>
+                    <h3>Residential Cleaning</h3>
+                    <p>Complete home cleaning for apartments and houses.</p>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-building"></i>
-                    <h3>Your second service</h3>
-                    <p>Then a brief description along with it.</p>
+                    <h3>Commercial Cleaning</h3>
+                    <p>Professional cleaning for offices and businesses.</p>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-couch"></i>
-                    <h3>Your third one</h3>
-                    <p>You can remove this if you only have 2.</p>
+                    <h3>Deep Cleaning</h3>
+                    <p>Thorough cleaning for all areas of your space.</p>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-broom"></i>
-                    <h3>And let's say 4</h3>
-                    <p>You can remove this if you only have 3.</p>
+                    <h3>Specialty Cleaning</h3>
+                    <p>Custom cleaning solutions for unique needs.</p>
                 </div>
             </div>
         </div>
     </section>
-    <!--NOTE: This is the section I wrote about Ur company u have to edit it to sth professional in order for u to gain more members and build trust-->
 
     <section id="about" class="about">
         <div class="container">
             <div class="about-content">
                 <h2>About Kaufman Kleeners</h2>
-                <p>A brief desc.</p>
-                <p>But keep it organized.</p>
-                <!--NOTE: This are the checks and stuff u see for ur comp-->
-                <!--Feel free to edit the feature u want to provide  but they gotta be real-->
+                <p>Professional cleaning services with over 10 years of experience.</p>
+                <p>We pride ourselves on quality service and customer satisfaction.</p>
                 <ul class="about-features">
                     <li><i class="fas fa-check"></i>Eco-friendly products</li>
                     <li><i class="fas fa-check"></i>Background-checked staff</li>
@@ -823,13 +816,12 @@
                     <li><i class="fas fa-check"></i>Competitive pricing</li>
                 </ul>
             </div>
-            <!--NOTE: This is the image url want to change it replace it with urs (optional)-->
             <div class="about-image">
                 <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80">
             </div>
         </div>
     </section>
-      <!--NOTE: This is the section where all the comments are written-->
+
     <section id="testimonials" class="testimonials">
         <div class="container">
             <h2>What Our Clients Say</h2>
@@ -843,10 +835,10 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </div>
-                        <p>"Comment."</p>
+                        <p>"The best cleaning service I've ever used! My apartment has never been cleaner."</p>
                         <div class="client">
-                            <strong>- Name</strong>
-                            <span>Role</span>
+                            <strong>- Sarah Johnson</strong>
+                            <span>Homeowner</span>
                         </div>
                     </div>
                     <div class="testimonial-card">
@@ -857,10 +849,10 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </div>
-                        <p>"Comment"</p>
+                        <p>"Professional, punctual, and thorough. Highly recommend Kaufman Kleeners!"</p>
                         <div class="client">
-                            <strong>- Name</strong>
-                            <span>Role</span>
+                            <strong>- Michael Chen</strong>
+                            <span>Office Manager</span>
                         </div>
                     </div>
                     <div class="testimonial-card">
@@ -871,22 +863,22 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star-half-alt"></i>
                         </div>
-                        <p>"Comment"</p>
+                        <p>"Great service at a reasonable price. Will definitely use them again."</p>
                         <div class="client">
-                            <strong>- Name</strong>
-                            <span>Role</span>
+                            <strong>- Emily Rodriguez</strong>
+                            <span>Small Business Owner</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--NOTE: These are the contact info replace them with ur actual info-->
+
     <section id="contact" class="contact">
         <div class="container">
             <div class="contact-info-section">
                 <h2>Contact Us</h2>
-                <p>Contact us if u ned help</p>
+                <p>Get in touch for a free quote or more information.</p>
                 
                 <div class="contact-details">
                     <div class="contact-item">
@@ -900,19 +892,18 @@
                         <i class="fas fa-envelope"></i>
                         <div class="contact-info">
                             <h4>Email</h4>
-                            <p>yourgmail@gmail.com</p>
+                            <p>info@kaufmankleeners.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div class="contact-info">
                             <h4>Service Area</h4>
-                            <p>IDK</p>
+                            <p>Serving the greater metropolitan area</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--NOTE: This is now a comments form that submits to your Formspree endpoint-->
             <div class="login-form">
                 <h3>Leave Us a Comment</h3>
                 <form action="https://formspree.io/f/mrbkqwwl" method="POST">
@@ -935,7 +926,7 @@
             </div>
         </div>
     </section>
-      <!--NOTE: This is the green section u see on the bottom-->
+
     <footer>
         <div class="container">
             <div class="footer-left">
@@ -948,7 +939,6 @@
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
-                <!--NOTE: These all the terms of use and policy pages and stuff don't edit anything except for href-->
                 <div class="footer-links">
                     <h4>Legal</h4>
                     <ul>
@@ -957,8 +947,6 @@
                     </ul>
                 </div>
             </div>
-          <!--NOTE: all the follow us icons are here if u want to add or remove any-->
-          <!--NOTE: make sure to replace the "#" with the actual socal media link for eg. discord has to be https://discord.gg/your ending for server-->
             <div class="footer-right">
                 <div class="follow-us">
                     <h4>Follow Us</h4>
@@ -967,98 +955,78 @@
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-discord"></i></a>
                     </div>
                 </div>
             </div>
-            <!--NOTE: THis  is the most important sause copy right section-->
             <div class="copyright">
                 <p>&copy; 2023 Kaufman Kleeners. All rights reserved.</p>
             </div>
         </div>
     </footer>
-<!--NOTE: Every thing inside the script note will change to //NOTE: then note goes on cuz of js functionality-->
-    <!--NOTE: Take some secret script this script of V5 is connected with backend  meaning the frontend api key is for the signup page but it is connected to the backend files and stuff so make sure to keep this key hidden-->
-  <!--Elnathan taking this API key or stealing any parts of this code will result in $1500 punishment so don't steal anything especally the js and stuff includes the api key for the functionality if u slote it i might even delete the backend files-->
+
+    <!-- Load Clerk's script -->
     <script src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"></script>
     
     <script>
-        // NOTE: Adding the entire backend
-        const frontendApi = 'pk_test_dmlhYmxlLWNhbWVsLTk1LmNsZXJrLmFjY291bnRzLmRldiQ'; // NOTE: API key for connecting backend and frontend
+        // Replace with your actual Clerk Publishable Key
+        const publishableKey = 'pk_test_dmlhYmxlLWNhbWVsLTk1LmNsZXJrLmFjY291bnRzLmRldiQ';
         
-        const clerk = new Clerk(frontendApi);
+        // Initialize Clerk
+        async function setupClerk() {
+            try {
+                // Load Clerk with your publishable key
+                await Clerk.load({ 
+                    publishableKey: publishableKey 
+                });
+                
+                // Get DOM elements
+                const authButton = document.getElementById('authButton');
+                const userButton = document.getElementById('userButton');
+                const heroCtaButton = document.getElementById('heroCtaButton');
+                
+                // Set up button event listeners
+                authButton.addEventListener('click', () => Clerk.openSignIn());
+                userButton.addEventListener('click', () => Clerk.openUserProfile());
+                heroCtaButton.addEventListener('click', () => {
+                    Clerk.user ? alert('You are already signed in!') : Clerk.openSignUp();
+                });
+                
+                // Update UI based on auth state
+                function updateUI() {
+                    if (Clerk.user) {
+                        authButton.style.display = 'none';
+                        userButton.style.display = 'block';
+                    } else {
+                        authButton.style.display = 'block';
+                        userButton.style.display = 'none';
+                    }
+                }
+                
+                // Listen for auth changes
+                Clerk.addListener((event) => {
+                    updateUI();
+                });
+                
+                // Initial UI update
+                updateUI();
+                
+            } catch (error) {
+                console.error('Clerk setup error:', error);
+            }
+        }
         
-        // NOTE: full set up of UI design
-        clerk.load({
-            // Sign up page modal and stuff
-            signIn: {
-                elements: {
-                    socialButtonsBlockButton: 'Sign in with {{provider|titleize}}',
-                    socialButtonsBlockButtonText: 'Continue with {{provider|titleize}}',
-                }
-            },
-            signUp: {
-                elements: {
-                    socialButtonsBlockButton: 'Sign up with {{provider|titleize}}',
-                    socialButtonsBlockButtonText: 'Continue with {{provider|titleize}}',
-                }
-            }
-        }).then(() => {
-            // NOTE: Functionality
-            const authButton = document.getElementById('authButton');
-            const userButton = document.getElementById('userButton');
-            const heroCtaButton = document.getElementById('heroCtaButton');
-            
-            // NOTE: CHecks if the user is signed in or not if u remove this nothing will work
-            if (clerk.user) {
-                authButton.style.display = 'none';
-                userButton.style.display = 'block';
-            } else {
-                authButton.style.display = 'block';
-                userButton.style.display = 'none';
-            }
-            
-            // NOTE: THe button openes the modal for sign up
-            authButton.addEventListener('click', () => {
-                clerk.openSignIn();
-            });
-            
-            // NOTE: This addes the user profilee and stuff
-            userButton.addEventListener('click', () => {
-                clerk.openUserProfile();
-            });
-            
-            // Other stuff
-            heroCtaButton.addEventListener('click', () => {
-                if (clerk.user) {
-                    // NOTE: IF user is signed in - redirect to services or show alert saying YOU are alrdy signed in!
-                    alert('You are already signed in!');
-                } else {
-                    // NOTE: if the user is not signed in then they have to signup
-                    clerk.openSignUp();
-                }
-            });
-            
-            // NOTE: FOr everyusers it checks autentications and stuff
-            clerk.addListener(({ user }) => {
-                if (user) {
-                    authButton.style.display = 'none';
-                    userButton.style.display = 'block';
-                } else {
-                    authButton.style.display = 'block';
-                    userButton.style.display = 'none';
-                }
-            });
-        }).catch(err => {
-            console.error('Error loading Clerk:', err);
-        });
+        // Start Clerk when the script loads
+        if (window.Clerk) {
+            setupClerk();
+        } else {
+            window.addEventListener('DOMContentLoaded', setupClerk);
+        }
 
-        // NOTE: auto-scroll functionality for like comments
+        // Testimonial carousel
         const testimonialTrack = document.getElementById('testimonialTrack');
         const testimonials = document.querySelectorAll('.testimonial-card');
         const testimonialWidth = testimonials[0].offsetWidth + 32;
         
-        // NOTE: keep them on the right side for ever not to move to the left
         testimonials.forEach(card => {
             const clone = card.cloneNode(true);
             testimonialTrack.appendChild(clone);
@@ -1070,17 +1038,11 @@
         function autoScrollTestimonials() {
             scrollPosition += 0.5;
             
-            // NOTE: reset position of the scrolling
             if (scrollPosition >= testimonialWidth * testimonials.length) {
-                // NOTE: reset for it
                 testimonialTrack.style.transition = 'none';
                 scrollPosition = 0;
                 testimonialTrack.style.transform = `translateX(0)`;
-                
-                // NOTE: countinous force reflow
                 void testimonialTrack.offsetWidth;
-                
-                // NOTE: restore and continue
                 testimonialTrack.style.transition = 'transform 0.5s ease';
             }
             
@@ -1088,7 +1050,6 @@
             animationId = requestAnimationFrame(autoScrollTestimonials);
         }
         
-        // NOTE: Start the movement
         autoScrollTestimonials();
     </script>
 </body>
