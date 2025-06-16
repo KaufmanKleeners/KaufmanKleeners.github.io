@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaufman Kleeners</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.css">
+    <style>
+        /* Main Layout */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .logo h1 {
+            color: #2e7d32;
+            margin: 0;
+        }
+        
+        /* Auth Pages */
+        .auth-page {
+            display: none;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .auth-page.active {
+            display: block;
+        }
+        
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .auth-form input {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .auth-form button {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .auth-switch {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        /* Main App Content */
+        .app-content {
+            display: none;
+        }
+        
+        /* Clerk Modal Customization */
+        .cl-modalBackdrop {
+            background-color: rgba(0, 0, 0, 0.7) !important;
+        }
+        
+        .cl-modalContent {
+            border-radius: 12px !important;
+        }
+        
+        .cl-card {
+            border-radius: 12px !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main App Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="/" class="logo">
+                    <img src="/images/head.png" alt="Kaufman Kleeners Logo">
+                    <h1>Kaufman Kleeners</h1>
+                </a>
+                <div id="auth-buttons">
+                    <button id="signup-btn" class="auth-button">Sign Up</button>
+                    <button id="login-btn" class="auth-button">Log In</button>
+                    <button id="user-btn" class="auth-button" style="display: none;">My Account</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Auth Pages -->
+    <div id="auth-pages">
+        <div id="signup-page" class="auth-page">
+            <h2>Create Account</h2>
+            <div id="clerk-signup"></div>
+            <div class="auth-switch">
+                Already have an account? <a href="/login">Log in</a>
+            </div>
+        </div>
+
+        <div id="login-page" class="auth-page">
+            <h2>Log In</h2>
+            <div id="clerk-login"></div>
+            <div class="auth-switch">
+                Don't have an account? <a href="/signup">Sign up</a>
+            </div>
+        </div>
+
+        <div id="profile-page" class="auth-page">
+            <h2>My Profile</h2>
+            <div id="user-info"></div>
+            <button id="logout-btn">Log Out</button>
+        </div>
+    </div>
+
+    <!-- Main App Content -->
+    <main class="container app-content" id="main-content">
+        <h2>Welcome to Kaufman Kleeners</h2>
+        <p>Professional cleaning services for your home or business.</p>
+        <!-- Your main content here -->
+    </main>
+
+    <!-- Clerk JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"></script>
+    
+    <script>
+        // Initialize Clerk
+        const clerkPublishableKey = 'pk_test_YOUR_PUBLISHABLE_KEY'; // Replace with your key
+        
+        async function setupClerk() {
+            try {
+                // Load Clerk
+                const clerk = await Clerk.load({
+                    publishableKey: clerkPublishableKey,
+                    appearance: {
+                        variables: {
+                            colorPrimary: '#2e7d32'
+                        }
+                    }
+                });
+                
+                // Check current route
+                function checkRoute() {
+                    const path = window.location.pathname;
+                    
+                    // Hide all auth pages first
+                    document.querySelectorAll('.auth-page').forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    
+                    // Show appropriate page based on route
+                    if (path === '/signup') {
+                        document.getElementById('signup-page').classList.add('active');
+                        clerk.mountSignUp('#clerk-signup');
+                    } else if (path === '/login') {
+                        document.getElementById('login-page').classList.add('active');
+                        clerk.mountSignIn('#clerk-login');
+                    } else if (path === '/@/me/user') {
+                        document.getElementById('profile-page').classList.add('active');
+                        if (clerk.user) {
+                            document.getElementById('user-info').innerHTML = `
+                                <p>Welcome, ${clerk.user.fullName || clerk.user.primaryEmailAddress.emailAddress}!</p>
+                            `;
+                        }
+                    } else {
+                        // Show main app content
+                        document.getElementById('main-content').style.display = 'block';
+                        document.getElementById('auth-pages').style.display = 'none';
+                    }
+                }
+                
+                // Update UI based on auth state
+                function updateUI() {
+                    if (clerk.user) {
+                        // User is signed in
+                        document.getElementById('signup-btn').style.display = 'none';
+                        document.getElementById('login-btn').style.display = 'none';
+                        document.getElementById('user-btn').style.display = 'inline-block';
+                    } else {
+                        // User is signed out
+                        document.getElementById('signup-btn').style.display = 'inline-block';
+                        document.getElementById('login-btn').style.display = 'inline-block';
+                        document.getElementById('user-btn').style.display = 'none';
+                    }
+                }
+                
+                // Set up button click handlers
+                document.getElementById('signup-btn').addEventListener('click', () => {
+                    window.location.href = '/signup';
+                });
+                
+                document.getElementById('login-btn').addEventListener('click', () => {
+                    window.location.href = '/login';
+                });
+                
+                document.getElementById('user-btn').addEventListener('click', () => {
+                    window.location.href = '/@/me/user';
+                });
+                
+                document.getElementById('logout-btn').addEventListener('click', async () => {
+                    await clerk.signOut();
+                    window.location.href = '/';
+                });
+                
+                // Listen for navigation events
+                window.addEventListener('popstate', checkRoute);
+                
+                // Initial setup
+                checkRoute();
+                updateUI();
+                
+                // Listen for authentication changes
+                clerk.addListener((event) => {
+                    updateUI();
+                    if (event.user && (window.location.pathname === '/signup' || window.location.pathname === '/login')) {
+                        window.location.href = '/@/me/user';
+                    }
+                    if (!event.user && window.location.pathname === '/@/me/user') {
+                        window.location.href = '/login';
+                    }
+                });
+                
+            } catch (error) {
+                console.error('Clerk setup error:', error);
+            }
+        }
+        
+        // Start Clerk when the page loads
+        if (window.Clerk) {
+            setupClerk();
+        } else {
+            document.addEventListener('DOMContentLoaded', setupClerk);
+        }
+    </script>
+</body>
+</html>
